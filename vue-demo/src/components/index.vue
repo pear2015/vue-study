@@ -6,7 +6,7 @@
     <div v-for="(item,index ) in list" :key="item" class="parent">
       <div class="column" @click="showChildren(index)">
         <span>{{item.name}}</span>
-        <img src="@/assets/icon-test_4.png" name="img" class="img"  />
+        <img src="@/assets/icon-test_4.png" name="img" class="img" />
       </div>
       <div class="children" style="display:none;">
         <div v-for="i in item.children" :key="i" class="child_column" @click="router(i.path)">
@@ -22,17 +22,17 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 .title-bar {
-  background-color: #0000ff5c;
   display: flex;
   margin: 0 auto;
-   width: 100%;
+  width: 100%;
   height: 100px;
+  background-color: #0000ff5c;
   border-bottom: 1px solid rgba(0, 0, 0, 0.38);
   justify-content: center;
   font-size: 38px;
+  flex-shrink: 0;
 }
 .title-bar span {
   color: #fff;
@@ -48,7 +48,9 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.38);
   justify-content: center;
   line-height: 76px;
-  height: 100%;
+  max-height: 100vw;
+  overflow: auto;
+  flex-shrink: 0;
 }
 .column {
   width: 100%;
@@ -60,7 +62,6 @@
   width: 86%;
   text-align: left;
   padding-left: 50px;
-  
 }
 .column .img {
   width: 40px;
@@ -73,14 +74,13 @@
   /* background-color: aqua; */
   height: 0px;
   flex-direction: column;
-
-  height: 100%;
   text-align: left;
-  
   background-color: aliceblue;
+  height: 80%;
+  background-color: aliceblue;
+  overflow: auto;
 }
-.child_column{
-
+.child_column {
 }
 .children span {
   padding-left: 50px;
@@ -111,25 +111,29 @@ export default {
   methods: {
     showChildren(index) {
       if (
-        document.getElementsByClassName("children")[index].style.display === "none"
+        document.getElementsByClassName("children")[index].style.display ===
+        "none"
       ) {
         document
           .getElementsByClassName("children")
           [index].setAttribute("style", "display:block");
-          document.getElementsByName('img')[index].src=require('@/assets/icon-test_2.png');
-          
+        document.getElementsByName("img")[
+          index
+        ].src = require("@/assets/icon-test_2.png");
       } else {
         document
           .getElementsByClassName("children")
           [index].setAttribute("style", "display:none");
-           document.getElementsByName('img')[index].src=require('@/assets/icon-test_4.png');
+        document.getElementsByName("img")[
+          index
+        ].src = require("@/assets/icon-test_4.png");
       }
     },
-    router(path){
-      console.log('path======',path);
+    router(path) {
+      console.log("path======", path);
       this.$router.push({
-        path:path
-      })
+        path: path
+      });
     }
   }
 };

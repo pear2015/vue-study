@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="lifecycle_container">
     <span style="font-size:36px">生命周期 官网图片</span>
     <div class="img">
       <img src="@/assets/lifecycle.png" />
@@ -20,7 +20,7 @@
   </div>
 </template>
 <style scoped>
-.container {
+.lifecycle_container {
   display: flex;
   flex-direction: column;
   width: 100%;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width:100%;">
     <div class="props_parent">
       <span>父组件：param1：{{param1}} param2：{{param2}}</span>
       <input type="button" value="更新" @click="update" />
