@@ -1,4 +1,4 @@
- const routerList = [
+const routerList = [
     {
         name: "vue知识讲解",
         children: [
@@ -70,29 +70,26 @@
         name: "vue组件封装",
         children: [
             {
-                name: "后续更新",
-                path: "/"
+                name: "video组件(支持m3u8)",
+                path: "/page_2/video"
             }
         ]
     },
     {
-        name: "vue难点讲解",
+        name: "vue源码",
         children: [
             {
-                name: "后续更新",
-                path: "/"
+                name: "模拟props",
+                path: "/props"
             }
         ]
     },
     {
         name: "vue遇到的常见问题分析",
         children: [
-            {
-                name: "data属性模拟props",
-                path: "/props"
-            }
+
         ]
     }
 ]
 
-module.exports={routerList}
+module.exports = { routerList }

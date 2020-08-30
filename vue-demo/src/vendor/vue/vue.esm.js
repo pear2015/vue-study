@@ -1254,14 +1254,14 @@ strats.data = function (
 ) {
   if (!vm) {
     if (childVal && typeof childVal !== 'function') {
-      process.env.NODE_ENV !== 'production' && warn(
-        'The "data" option should be a function ' +
-        'that returns a per-instance value in component ' +
-        'definitions.',
-        vm
-      );
-
-      return parentVal
+      //  屏蔽 data 不是 function的告警
+      // process.env.NODE_ENV !== 'production' && warn(
+      //   'The "data" option should be a function ' +
+      //   'that returns a per-instance value in component ' +
+      //   'definitions.',
+      //   vm
+      // );
+      // return parentVal
     }
     return mergeDataOrFn(parentVal, childVal)
   }
@@ -4694,7 +4694,7 @@ function initProps (vm, propsOptions) {
     // during Vue.extend(). We only need to proxy props defined at
     // instantiation here.
     if (!(key in vm)) {
-      proxy(vm, "_props", key);
+        proxy(vm, "_props", key);
     }
   };
 
@@ -4731,11 +4731,12 @@ function initData (vm) {
       }
     }
     if (props && hasOwn(props, key)) {
-      process.env.NODE_ENV !== 'production' && warn(
-        "The data property \"" + key + "\" is already declared as a prop. " +
-        "Use prop default value instead.",
-        vm
-      );
+      // props和data有重复定义的数据对象，屏蔽告警
+      // process.env.NODE_ENV !== 'production' && warn(
+      //   "The data property \"" + key + "\" is already declared as a prop. " +
+      //   "Use prop default value instead.",
+      //   vm
+      // );
     } else if (!isReserved(key)) {
       proxy(vm, "_data", key);
     }
@@ -5003,6 +5004,7 @@ function initMixin (Vue) {
     vm._self = vm;
     initLifecycle(vm);
     initEvents(vm);
+    propsDefineReactive(vm);
     initRender(vm);
     callHook(vm, 'beforeCreate');
     initInjections(vm); // resolve injections before data/props
@@ -5021,6 +5023,25 @@ function initMixin (Vue) {
       vm.$mount(vm.$options.el);
     }
   };
+}
+// data中与父组件的attrs中有重复定义的数据属性，而props未定义，将当前属性填充到props中
+function propsDefineReactive(vm) {
+  const parentData = vm.$options._parentVnode && vm.$options._parentVnode.data;
+  if (parentData && parentData && parentData.attrs && vm.$options.data && Object.keys(parentData.attrs).length > 0 && Object.keys(vm.$options.data).length > 0) {
+    const attrs = parentData && parentData.attrs;
+    const data = vm.$options.data;
+    vm.$options.props = vm.$options.props || {};
+    vm.$options.propsData = vm.$options.propsData || {};
+    vm.$options._propKeys = vm.$options._propKeys || [];
+    for (let att in attrs) {
+      if (att && data.hasOwnProperty(att)) {
+        vm.$options.propsData[att] = attrs[att];
+        vm.$options._propKeys.push(att);
+        defineReactive$$1(vm.$options.props, att, attrs[att]);
+        delete vm.$options._parentVnode.data.attrs[att];
+      }
+    }
+  }
 }
 
 function initInternalComponent (vm, options) {
@@ -5206,9 +5227,9 @@ function initExtend (Vue) {
 function initProps$1 (Comp) {
   var props = Comp.options.props;
   for (var key in props) {
-    proxy(Comp.prototype, "_props", key);
+      proxy(Comp.prototype, "_props", key);
+    }
   }
-}
 
 function initComputed$1 (Comp) {
   var computed = Comp.options.computed;
