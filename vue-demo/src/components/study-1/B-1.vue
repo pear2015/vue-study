@@ -24,7 +24,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .container {
-  width: 800px;
+  width: 100%;
   height: 200px;
   display: flex;
   flex-direction: column;

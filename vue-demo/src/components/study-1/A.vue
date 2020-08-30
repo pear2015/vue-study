@@ -1,8 +1,8 @@
 <template>
   <div>
-    <B :param1="param1" :param2="param2"></B>
+    <!-- <B :param1="param1" :param2="param2"></B>
     <B1 :param1="param1" :param2="param2"></B1>
-    <B2 :param2="param2"></B2>
+    <B2 :param2="param2"></B2> -->
   </div>
 </template>
 
