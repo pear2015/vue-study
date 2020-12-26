@@ -4,11 +4,11 @@ const routerList = [
         children: [
             {
                 name: "vue生命周期",
-                path: "/lifecycle"
+                path: "/pages/lifecycle/index"
             },
             {
                 name: "数据绑定(包含表单)",
-                path: "/dataBind"
+                path: "/pages/data-bind/index"
             },
             {
                 name: "条件渲染",
@@ -34,7 +34,7 @@ const routerList = [
 
             {
                 name: "父子组件通信",
-                path: "/"
+                path: "/pages/props/parent"
             },
             {
                 name: "组件注册",
@@ -62,7 +62,7 @@ const routerList = [
             },
             {
                 name: "keep-Alive",
-                path: "/"
+                path: "/pages/keep-Alive/index"
             }
         ]
     },
@@ -71,7 +71,7 @@ const routerList = [
         children: [
             {
                 name: "video组件(支持m3u8)",
-                path: "/page_2/video"
+                path: "/page_1/video/index"
             }
         ]
     },
@@ -80,7 +80,7 @@ const routerList = [
         children: [
             {
                 name: "模拟props",
-                path: "/props"
+                path: "/"
             }
         ]
     },

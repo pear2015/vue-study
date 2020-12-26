@@ -1,8 +1,14 @@
 <template>
   <div class="props_childrean">
-    <span>子组件： data: 定义 param1：test1；param1：test2</span>
-    <span>props: {param1: String }</span>
-    <span style="color:red">接收:param1:{{param1}}, param2:{{param2}}</span>
+    <span>子组件：</span>
+    <div>
+      接收父组件传来的值:param1:
+      <span style="color:red">{{getParam1}}</span>, param2:
+      <span style="color:red">{{getParam2}}</span>
+    </div>
+      <span>修改param1：</span>
+      <input type="text" :value="param1" placeholder="修改参数param1" ref="children" />
+    <input type="button" value="子传父" @click="send" />
   </div>
 </template>
 
@@ -17,7 +23,19 @@ export default {
     param2: "test2",
     msg: "Welcome to Your Vue.js App"
   },
-  methods: {}
+  computed: {
+    getParam1() {
+      return this.param1;
+    },
+    getParam2() {
+      return this.param2;
+    }
+  },
+  methods: {
+    send() {
+      this.$emit("sendvalue", this.$refs.children.value);
+    }
+  }
 };
 </script>
 
@@ -25,15 +43,27 @@ export default {
 <style scoped>
 .props_childrean {
   width: 100%;
-  height: 150px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   color: rgb(0, 0, 0);
-  background-color: #ff880086;
   align-content: flex-start;
   text-align: left;
   padding-left: 60px;
   font-size: 28px;
+}
+.props_childrean input {
+  height: 60px;
+}
+.props_childrean input[type="text"] {
+  width: 60%;
+  height: 60px;
+}
+.props_childrean input[type="button"] {
+  width: 150px;
+  height: 60px;
+  color: #fff;
+  background-color: cornflowerblue;
 }
 </style>

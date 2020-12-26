@@ -38,8 +38,6 @@ export default {
     };
   },
   mounted() {
-    //this.videoSrc="E:\\vue-project\\demo\\src\\asset\\test.mp4";
-
     this.initVideo();
   },
   methods: {
@@ -68,7 +66,6 @@ export default {
     next() {
       this.playIndex =
         this.playIndex + 1 > this.videoList.length - 1 ? 0 : this.playIndex + 1;
-      console.log("next=====", this.playIndex);
       this.initVideo();
       this.myPlayer.load(this.videoList[this.playIndex]);
     }

@@ -1,46 +1,22 @@
+/** 根据文件目录生成路由 */
 import Vue from 'vue'
 import Router from 'vue-router'
-import lifecycle from '@/components/pages/lifecycle/index'
-import dataBind from '@/components/pages/data-bind/index'
-import keepAlive2 from '@/components/pages/keep-Alive/B'
-import keepAlive3 from '@/components/pages/keep-Alive/C'
-import index from '@/components/index'
-import props from '@/components/pages/props/parent'
-import video from '@/components/page_2/video'
+import routerRoutes from "./router";
 
 Vue.use(Router)
-
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: '/',
-      component: index
-    },  {
-      path: '/props',
-      name: 'props',
-      component: props
-    },
-    {
-      path: '/lifecycle',
-      name: 'lifecycle',
-      component: lifecycle
-    },
-    {
-      path: '/dataBind',
-      name: 'dataBind',
-      component: dataBind
-    },
-    {
-      path: '/page_2/video',
-      name: 'page_2/video',
-      component: video
-    },
-   
-    {
-      path: '/C',
-      name: 'C',
-      component: keepAlive3
+const router = new Router({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes: routerRoutes,//使用
+  scrollBehavior: (to, from, savedPosition) => {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return {
+        x: 0,
+        y: 0
+      };
     }
-  ]
-})
+  },
+});
+export default router

@@ -3,13 +3,13 @@
     <div class="title-bar">
       <span>vue知识解读</span>
     </div>
-    <div v-for="(item,index ) in list" :key="item" class="parent">
+    <div v-for="(item,index ) in list" :key="index" class="parent">
       <div class="column" @click="showChildren(index)">
         <span>{{item.name}}</span>
         <img src="@/assets/icon-test_4.png" name="img" class="img" />
       </div>
       <div class="children" style="display:none;">
-        <div v-for="i in item.children" :key="i" class="child_column" @click="router(i.path)">
+        <div v-for="i in item.children" :key="i.index" class="child_column" @click="router(i.path)">
           <span>{{i.name}}</span>
         </div>
       </div>
@@ -101,7 +101,7 @@
 </style>
 
 <script>
-import { routerList } from "./api/router.data";
+import { routerList } from "../api/router.data";
 export default {
   data() {
     return {
@@ -130,7 +130,6 @@ export default {
       }
     },
     router(path) {
-      console.log("path======", path);
       this.$router.push({
         path: path
       });

@@ -32,8 +32,6 @@
   padding-top: 30px;
   padding-bottom: 30px;
 }
-.content {
-}
 .template {
   background-color: #fff;
   padding-top: 20px;
@@ -47,7 +45,7 @@
 }
 </style>
 <script>
-import { data } from "../../api/common.data";
+import { data } from "../../../api/common.data";
 export default {
   name: "data-bind",
   data() {
