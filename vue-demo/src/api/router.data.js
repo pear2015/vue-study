@@ -14,18 +14,9 @@ const routerList = [
                 name: "条件与循环",
                 path: "/pages/if_for/index"
             },
-
             {
-                name: "计算属性",
-                path: "/"
-            },
-            {
-                name: "事件处理",
-                path: "/"
-            },
-            {
-                name: "监听",
-                path: "/"
+                name: "计算属性和监听器",
+                path: "/pages/computed_watch/index"
             },
 
             {
@@ -42,6 +33,10 @@ const routerList = [
             },
             {
                 name: "插槽",
+                path: "/"
+            },
+            {
+                name: "事件处理",
                 path: "/"
             },
             {
