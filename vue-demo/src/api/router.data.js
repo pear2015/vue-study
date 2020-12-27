@@ -11,12 +11,8 @@ const routerList = [
                 path: "/pages/data-bind/index"
             },
             {
-                name: "条件渲染",
-                path: "/"
-            },
-            {
-                name: "列表渲染",
-                path: "/"
+                name: "条件与循环",
+                path: "/pages/if_for/index"
             },
 
             {

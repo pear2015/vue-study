@@ -67,7 +67,7 @@ background-color: #eee;
 }
 </style>
 <script>
-import { data } from "../../api/common.data";
+import { data } from "../../../api/common.data";
 export default {
   name: "lifecycle",
   components: {},
